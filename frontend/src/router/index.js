@@ -1,0 +1,49 @@
+import { createRouter, createWebHistory } from 'vue-router';
+import Login from '@/pages/Login.vue';
+import DashboardLayout from '@/components/layout/DashboardLayout.vue';
+import Dashboard from '@/pages/Dashboard.vue';
+import User from '@/pages/user/User.vue';
+import Deposito from '@/pages/deposito/Deposito.vue';
+import DepositoForm from '@/pages/deposito/DepositoForm.vue';
+
+const isLoggedIn = () => {
+	return localStorage.getItem('token') !== null;
+};
+
+const routes = [
+	{
+		path: '/',
+		redirect: '/login',
+	},
+	{
+		path: '/login',
+		name: 'Login',
+		component: Login,
+	},
+	{
+		path: '/',
+		component: DashboardLayout,
+		meta: { requiresAuth: true },
+		children: [
+			{ path: '/dashboard', component: Dashboard },
+			{ path: '/users', component: User },
+			{ path: '/depositos', component: Deposito },
+			{ path: '/depositos/create', component: DepositoForm },
+		],
+	}
+];
+
+const router = createRouter({
+	history: createWebHistory(),
+	routes,
+});
+
+router.beforeEach((to, from, next) => {
+	if (to.meta.requiresAuth && !isLoggedIn()) {
+		next({ path: '/' });
+	} else {
+		next();
+	}
+});
+
+export default router;
