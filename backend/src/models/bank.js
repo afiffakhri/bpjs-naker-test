@@ -6,6 +6,7 @@ const Bank = sequelize.define('Bank', {
 		type: DataTypes.INTEGER,
 		allowNull: false,
 		primaryKey: true,
+		autoIncrement: true,
 		field: 'id_bank',
 	},
 	bank_name: {

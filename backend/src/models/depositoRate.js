@@ -6,6 +6,7 @@ const DepositoRate = sequelize.define('DepositoRate', {
 		type: DataTypes.INTEGER,
 		allowNull: false,
 		primaryKey: true,
+		autoIncrement: true,
 		field: 'id_deposito_rate',
 	},
 	id_bank:{

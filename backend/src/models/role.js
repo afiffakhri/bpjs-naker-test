@@ -6,6 +6,7 @@ const Role = sequelize.define('Role', {
 		type: DataTypes.INTEGER,
 		allowNull: false,
 		primaryKey: true,
+		autoIncrement: true,
 		field: 'id_role',
 	},
 	role: {

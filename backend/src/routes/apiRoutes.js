@@ -1,10 +1,16 @@
 const express = require('express');
+const { getAllUsers, getUserById, getUserByParams } = require('../controllers/userController');
 const { getAllRoles, getRolesById } = require('../controllers/roleController');
 const { getAllUnitBisnis, getUnitBisnisById } = require('../controllers/unitBisnisController');
 const { getAllBank, getBankById } = require('../controllers/bankController');
 const { getAllDepositoRate, getDepositoRateById, getDepositoRateByBankId } = require('../controllers/depositoRateController');
+const { getAllDeposito, getDepositoById, create, update } = require('../controllers/depositoController');
+const { getAllSettlementProcess, getSettlementProcessById, getSettlementProcessByDepositoID } = require('../controllers/settlementProcessController');
 const router = express.Router();
 
+router.post('/users-query', getUserByParams);
+router.get('/users', getAllUsers);
+router.get('/users/:id', getUserById);
 router.get('/roles', getAllRoles);
 router.get('/roles/:id', getRolesById);
 router.get('/unit-bisnis', getAllUnitBisnis);
@@ -14,5 +20,12 @@ router.get('/banks/:id', getBankById);
 router.get('/deposito-rates', getAllDepositoRate);
 router.get('/deposito-rates-bank/:id', getDepositoRateByBankId);
 router.get('/deposito-rates/:id', getDepositoRateById);
+router.get('/depositos', getAllDeposito);
+router.get('/depositos/:id', getDepositoById);
+router.post('/depositos', create);
+router.patch('/depositos/:id', update);
+router.get('/settlement-process', getAllSettlementProcess);
+router.get('/settlement-process-deposito/:id', getSettlementProcessById);
+router.get('/settlement-process/:id', getSettlementProcessByDepositoID);
 
 module.exports = router;

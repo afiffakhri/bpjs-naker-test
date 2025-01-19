@@ -6,6 +6,7 @@ const Deposito = sequelize.define('Deposito', {
 		type: DataTypes.INTEGER,
 		allowNull: false,
 		primaryKey: true,
+		autoIncrement: true,
 		field: 'id_deposito',
 	},
 	id_deposito_rate: {
@@ -59,27 +60,27 @@ const Deposito = sequelize.define('Deposito', {
 	nama_pemegang_rekening: {
 		type: DataTypes.STRING,
 		allowNull: false,
-	}
+	},
 	nomor_rekening: {
 		type: DataTypes.STRING,
 		allowNull: false,
-	}
+	},
 	created_at: {
 		type: DataTypes.DATE(6),
 		allowNull: true,
-    },
-    created_by: {
-    	type: DataTypes.SMALLINT,
-    	allowNull: true,
-    },
-    updated_at: {
-    	type: DataTypes.DATE(6),
-    	allowNull: true,
-    },
-    updated_by: {
-    	type: DataTypes.SMALLINT,
-    	allowNull: true,
-    },
+	},
+	created_by: {
+		type: DataTypes.SMALLINT,
+		allowNull: true,
+	},
+	updated_at: {
+		type: DataTypes.DATE(6),
+		allowNull: true,
+	},
+	updated_by: {
+		type: DataTypes.SMALLINT,
+		allowNull: true,
+	},
 }, 
 {
   tableName: 'deposito',

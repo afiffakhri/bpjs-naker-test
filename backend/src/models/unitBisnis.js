@@ -6,6 +6,7 @@ const UnitBisnis = sequelize.define('UnitBisnis', {
 		type: DataTypes.INTEGER,
 		allowNull: false,
 		primaryKey: true,
+		autoIncrement: true,
 		field: 'id_unit_bisnis',
 	},
 	unit_bisnis: {

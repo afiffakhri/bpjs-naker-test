@@ -6,6 +6,7 @@ const SettlementProcess = sequelize.define('SettlementProcess', {
 		type: DataTypes.INTEGER,
 		allowNull: false,
 		primaryKey: true,
+		autoIncrement: true,
 		field: 'id_settlement_process',
 	},
 	id_deposito: {
@@ -46,7 +47,7 @@ const SettlementProcess = sequelize.define('SettlementProcess', {
 	},
 },
 {
-	tableName: 'bank',
+	tableName: 'settlement_process',
 	timestamps: false,
 });
 

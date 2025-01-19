@@ -51,8 +51,8 @@ const pageTitle = computed(() => {
 
 <template>
 	<div class="flex h-screen bg-gray-100">
-		<div class="hidden lg:block w-64 bg-gray-800 text-white p-4">
-			<h2 class="text-xl mb-6">Hi, {{user.name}} - ({{user.unit_bisnis.unit_bisnis}}) - ({{user.role.role}})</h2>
+		<div class="hidden lg:block w-64 bg-gray-800 text-white p-4 h-full">
+			<h2 class="text-xl mb-6">Hi, {{user.name}}{{user.unit_bisnis ? ' - (' + user.unit_bisnis.unit_bisnis + ')' : ''}}{{user.role ? ' - (' + user.role.role + ')' : ''}}</h2>
 			<Menu :model="filteredMenuItems">
 				<template #item="{ item, props }">
 					<router-link v-if="item.to" v-slot="{ href, navigate }" :to="item.to" custom>
@@ -70,7 +70,7 @@ const pageTitle = computed(() => {
 		</div>
 
 		<!-- Main Content Area -->
-		<div class="flex-1 flex flex-col">
+		<div class="flex-1 flex flex-col h-full">
 			<!-- Top Bar -->
 			<div class="bg-white shadow-md p-4 flex justify-between items-center">
 				<!-- Hamburger button for smaller screens -->
@@ -91,7 +91,7 @@ const pageTitle = computed(() => {
 			</div>
 
 			<!-- Main Content -->
-			<div class="p-4 flex-1">
+			<div class="p-4 flex-1 overflow-auto">
 				<!-- Dynamic Content (based on the active route) -->
 				<router-view />
 			</div>
@@ -103,9 +103,22 @@ const pageTitle = computed(() => {
 			class="lg:hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-10"
 			@click="toggleSidebar"
 		>
-			<div class="bg-gray-800 text-white w-64 p-4">
+			<div class="bg-gray-800 text-white w-64 p-4 h-full">
 				<h2 class="text-xl mb-6">Admin Dashboard</h2>
-				<Menu :model="menuItems" item-template="customItemTemplate" />
+				<Menu :model="filteredMenuItems">
+					<template #item="{ item, props }">
+						<router-link v-if="item.to" v-slot="{ href, navigate }" :to="item.to" custom>
+							<a v-ripple :href="href" v-bind="props.action" @click="navigate">
+								<span :class="item.icon" />
+								<span class="ml-2">{{ item.label }}</span>
+							</a>
+						</router-link>
+						<a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action">
+							<span :class="item.icon" />
+							<span class="ml-2">{{ item.label }}</span>
+						</a>
+					</template>
+				</Menu>
 			</div>
 		</div>
 	</div>

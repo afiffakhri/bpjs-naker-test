@@ -12,7 +12,7 @@
  Target Server Version : 140015 (140015)
  File Encoding         : 65001
 
- Date: 18/01/2025 16:33:44
+ Date: 20/01/2025 02:24:07
 */
 
 
@@ -278,7 +278,7 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS "settlement_process";
 CREATE TABLE "settlement_process" (
-  "id_settlement_status" int4 NOT NULL DEFAULT nextval('settlement_process_id_settlement_status_seq'::regclass),
+  "id_settlement_process" int4 NOT NULL DEFAULT nextval('settlement_process_id_settlement_status_seq'::regclass),
   "id_deposito" int2,
   "id_unit_bisnis" int2,
   "id_role" int2,
@@ -392,7 +392,7 @@ SELECT setval('"role_id_role_seq"', 6, true);
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "settlement_process_id_settlement_status_seq"
-OWNED BY "settlement_process"."id_settlement_status";
+OWNED BY "settlement_process"."id_settlement_process";
 SELECT setval('"settlement_process_id_settlement_status_seq"', 1, false);
 
 -- ----------------------------
@@ -432,7 +432,7 @@ ALTER TABLE "role" ADD CONSTRAINT "role_pkey" PRIMARY KEY ("id_role");
 -- ----------------------------
 -- Primary Key structure for table settlement_process
 -- ----------------------------
-ALTER TABLE "settlement_process" ADD CONSTRAINT "settlement_process_pkey" PRIMARY KEY ("id_settlement_status");
+ALTER TABLE "settlement_process" ADD CONSTRAINT "settlement_process_pkey" PRIMARY KEY ("id_settlement_process");
 
 -- ----------------------------
 -- Primary Key structure for table unit_bisnis
