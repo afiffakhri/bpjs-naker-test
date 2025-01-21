@@ -9,9 +9,9 @@ export const getAllUsers = async () => {
 	}
 };
 
-export const getUserById = async(id_deposito_rate) => {
+export const getUserById = async(id_user) => {
 	try {
-		const response = await api.get(`/users/${id_deposito_rate}`);
+		const response = await api.get(`/users/${id_user}`);
 		return response.data;
 	} catch (error) {
 		throw error.response?.data || error;

@@ -11,7 +11,7 @@ export const getAllBank = async () => {
 
 export const getBankById = async(id_bank) => {
 	try {
-		const response = await api.get('/banks/${id_bank}');
+		const response = await api.get(`/banks/${id_bank}`);
 		return response.data;
 	} catch (error) {
 		throw error.response?.data || error;

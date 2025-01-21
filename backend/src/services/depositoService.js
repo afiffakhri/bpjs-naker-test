@@ -5,7 +5,11 @@ async function getAllDeposito() {
 	const datas = await Deposito.findAll();
 
 	const depositos = await Promise.all(datas.map(async (data) => {
-		const settlement_process = await settlementProcess.findByPk(data.id_deposito);
+		const settlement_process = await settlementProcess.findAll({
+			where: {
+				id_deposito: data.id_deposito
+			}
+		});
 
 		return {
 			...data.toJSON(),
@@ -17,14 +21,38 @@ async function getAllDeposito() {
 }
 
 async function getDepositoById(id_deposito){
-	const deposito = Deposito.findOne({ where: { id_deposito } });
+	const deposito = await Deposito.findOne({ where: { id_deposito } });
 
-	const settlement_process = await settlementProcess.findByPk(data.id_deposito);
+	const settlement_process = await settlementProcess.findAll({
+		where: {
+			id_deposito: id_deposito
+		}
+	});
 
 	return {
-		...data.toJSON(),
-		settlement_process: settlementProcess ? settlementProcess : null
+		deposito,
+		settlement_process: settlement_process ? settlement_process : null
 	};	
+}
+
+async function getDepositoByParams(params){
+	console.log(params);
+	const datas = await Deposito.findAll({ where: params });
+
+	const depositos = await Promise.all(datas.map(async (data) => {
+		const settlement_process = await settlementProcess.findAll({
+			where: {
+				id_deposito: data.id_deposito
+			}
+		});
+
+		return {
+			...data.toJSON(),
+			settlement_process: settlement_process ? settlement_process : null
+		};
+	}));
+
+	return depositos;
 }
 
 async function createDeposito(depositoData) {
@@ -55,4 +83,4 @@ async function updateDeposito(id_deposito, depositoData) {
 	}
 }
 
-module.exports = { getAllDeposito, getDepositoById, createDeposito, updateDeposito };
+module.exports = { getAllDeposito, getDepositoById, getDepositoByParams, createDeposito, updateDeposito };

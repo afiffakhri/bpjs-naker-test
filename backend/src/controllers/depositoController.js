@@ -22,7 +22,20 @@ async function getDepositoById(req, res) {
 		res.json({ success: true, deposito: deposito });
 	} catch (error) {
 		console.log(error);
-		res.status(500).json({ message: 'Error getting roles' });
+		res.status(500).json({ message: 'Error getting depositos' });
+	}
+}
+
+async function getDepositoByParams(req, res){
+	const params = req.body;
+
+	try{
+		const depositos = await depositoService.getDepositoByParams(params);
+
+		res.json({ success: true, depositos: depositos });
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: 'Error getting depositos' });
 	}
 }
 
@@ -99,4 +112,4 @@ async function update(req, res) {
 	}
 }
 
-module.exports = { getAllDeposito, getDepositoById, create, update };
+module.exports = { getAllDeposito, getDepositoById, getDepositoByParams, create, update };

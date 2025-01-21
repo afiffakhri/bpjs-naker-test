@@ -5,6 +5,7 @@ import Dashboard from '@/pages/Dashboard.vue';
 import User from '@/pages/user/User.vue';
 import Deposito from '@/pages/deposito/Deposito.vue';
 import DepositoForm from '@/pages/deposito/DepositoForm.vue';
+import DetailDeposito from '@/pages/deposito/DetailDeposito.vue'
 
 const isLoggedIn = () => {
 	return localStorage.getItem('token') !== null;
@@ -29,6 +30,7 @@ const routes = [
 			{ path: '/users', component: User },
 			{ path: '/depositos', component: Deposito },
 			{ path: '/depositos/create', component: DepositoForm },
+			{ path: '/depositos/:id_deposito', component: DetailDeposito },
 		],
 	}
 ];

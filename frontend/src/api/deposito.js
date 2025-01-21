@@ -18,6 +18,15 @@ export const getDepositoById = async(id_deposito) => {
 	}
 };
 
+export const getDepositoByParams = async(params) => {
+	try {
+		const response = await api.post('/depositos-query', params);
+		return response.data;
+	} catch (error) {
+		throw error.response?.data || error;
+	}
+};
+
 export const createDeposito = async (depositoData) => {
 	try {
 		const response = await api.post('/depositos', depositoData);

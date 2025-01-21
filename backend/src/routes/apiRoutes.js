@@ -4,7 +4,7 @@ const { getAllRoles, getRolesById } = require('../controllers/roleController');
 const { getAllUnitBisnis, getUnitBisnisById } = require('../controllers/unitBisnisController');
 const { getAllBank, getBankById } = require('../controllers/bankController');
 const { getAllDepositoRate, getDepositoRateById, getDepositoRateByBankId } = require('../controllers/depositoRateController');
-const { getAllDeposito, getDepositoById, create, update } = require('../controllers/depositoController');
+const { getAllDeposito, getDepositoById, getDepositoByParams, create, update } = require('../controllers/depositoController');
 const { getAllSettlementProcess, getSettlementProcessById, getSettlementProcessByDepositoID } = require('../controllers/settlementProcessController');
 const router = express.Router();
 
@@ -20,6 +20,7 @@ router.get('/banks/:id', getBankById);
 router.get('/deposito-rates', getAllDepositoRate);
 router.get('/deposito-rates-bank/:id', getDepositoRateByBankId);
 router.get('/deposito-rates/:id', getDepositoRateById);
+router.post('/depositos-query', getDepositoByParams);
 router.get('/depositos', getAllDeposito);
 router.get('/depositos/:id', getDepositoById);
 router.post('/depositos', create);
