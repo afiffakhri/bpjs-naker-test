@@ -1,7 +1,14 @@
 const Role = require('../models/role');
+const { Op } = require('sequelize');
 
 async function getAllRoles() {
-	return await Role.findAll();
+	return await Role.findAll({
+		where: {
+			id_role: {
+				[Op.ne]: 1
+			}
+		}
+	});
 }
 
 async function getRoleById(id_role){

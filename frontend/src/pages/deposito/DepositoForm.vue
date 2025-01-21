@@ -7,6 +7,8 @@ import Dropdown from 'primevue/dropdown';
 import Button from 'primevue/button';
 
 import { getAllBank } from '../../api/bank';
+import { getAllRoles } from '../../api/role';
+import { getUserByParams } from '../../api/user';
 import { getAllDepositoRate, getDepositoRateById, getDepositoRateByBankId } from '../../api/depositoRates';
 import { createDeposito } from '../../api/deposito';
 
@@ -33,9 +35,20 @@ const interestRates = ref([]);
 const tenor = ref('');
 const rate = ref('');
 const months = ref('');
+const roles = ref([]);
+const users = ref({});
+
+const investasiRows = ref([
+	{ id_role: null, id_user: null },
+]);
+
+const settlementRows = ref([
+	{ id_role: null, id_user: null },
+]);
 
 onMounted(() => {
 	fetchAllBanks();
+	getRoles();
 });
 
 const onlyNumber = ($event) => {
@@ -46,6 +59,15 @@ const onlyNumber = ($event) => {
       alert('Please only input number');
    }
 }
+
+const getRoles = async () => {
+	try {
+		const data = await getAllRoles();
+		roles.value = data.roles;
+	} catch (error) {
+		console.log(error)
+	}
+};
 
 const fetchAllBanks = async () => {
 	try {
@@ -67,6 +89,18 @@ const fetchInterestRates = async () => {
 		interestRates.value = response.deposito_rates;
 	} catch (error) {
 		console.error('Error fetching interest rates:', error);
+	}
+};
+
+const fetchUsers = async (index, type = 'investasi') => {
+	const row = type === 'investasi' ? investasiRows.value[index] : settlementRows.value[index];
+	const id_unit_bisnis = type === 'investasi' ? 1 : 2;
+
+
+	if (row.id_role) {
+		 const data = await getUserByParams(id_unit_bisnis, row.id_role);
+		 // console.log(data);
+		 users.value[row.id_role] = data.users;
 	}
 };
 
@@ -128,6 +162,28 @@ const calculateEstimatedInterest = () => {
 	}
 };
 
+const isInvalid = (value) => {
+	return !value;
+};
+
+const addRow = (type) => {
+	const newRow = { id_role: null, id_user: null };
+	if (type === 'investasi') {
+		investasiRows.value.push(newRow);
+	} else if (type === 'settlement') {
+		settlementRows.value.push(newRow);
+	}
+};
+
+const removeRow = (type, index) => {
+	if (type === 'investasi') {
+		investasiRows.value.splice(index, 1);
+	} else if (type === 'settlement') {
+		settlementRows.value.splice(index, 1);
+	}
+};
+
+
 const submit = async () => {
 	formData.value.estimated_value = Number(formData.value.nominal) + Number(parseFloat(formData.value.estimatedInterest).toFixed(2));
 
@@ -146,6 +202,22 @@ const submit = async () => {
 		selectedDepositBank: formData.value.selectedDepositBank,
 		created_by: userLogin.id_user
 	};
+
+	if(!investasiRows.value[0]?.id_role){
+		alert("Please choose at least 1 from Unit Bisnis Investasi in Settlement Process");
+		return false;
+	}
+	else{
+		depositoData.unit_bisnis_investasi = investasiRows.value;
+	}
+
+	if(!settlementRows.value[0]?.id_role){
+		alert("Please choose at least 1 from Unit Bisnis Settlement in Settlement Process");
+		return false;
+	}
+	else{
+		depositoData.unit_bisnis_settlement = settlementRows.value;
+	}
 
 	try {
 		const response = await createDeposito(depositoData);
@@ -210,7 +282,7 @@ const cancel = () => {
 			</div>
 
 			<!-- Third Section: Data Deposito -->
-			<div>
+			<div class="border-b pb-6">
 				<h2 class="text-xl font-semibold mb-4">Data Deposito</h2>
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<div>
@@ -253,6 +325,105 @@ const cancel = () => {
 							class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" fluid
 							readonly
 						/>
+					</div>
+				</div>
+			</div>
+
+			<div class="border-b pb-6">
+				<h2 class="text-xl font-semibold mb-4">Settlement Process</h2>
+
+				<div class="space-y-6">
+					<div class="border p-4 rounded-lg">
+						<h3 class="text-xl font-semibold mb-4">Unit Bisnis Investasi</h3>
+						<p class="text-blue-400 text-sm">*Process settlement deposito bottom - up</p>
+						<div v-for="(row, index) in investasiRows" :key="index" class="flex gap-4 mb-4">
+							<div class="w-full">
+								<label class="block text-sm font-semibold mb-1">Role</label>
+								<Dropdown 
+									v-model="row.id_role"
+									:options="roles"
+									optionLabel="role"
+									optionValue="id_role"
+									placeholder="Pilih Role"
+									class="w-full md:w-14rem"
+									:required="true"
+									:class="{'border-red-500': isInvalid(row.id_role)}"
+									@change="fetchUsers(index)"
+								/>
+								<p v-if="isInvalid(row.id_role)" class="text-red-500 text-sm">Role is required</p>
+							</div>
+
+							<div class="w-full">
+								<label class="block text-sm font-semibold mb-1">User</label>
+								<Dropdown
+									v-model="row.id_user"
+									:options="users[row.id_role] || []"
+									optionLabel="name"
+									optionValue="id_user"
+									placeholder="Pilih User"
+									class="w-full"
+								/>
+							</div>
+
+							<Button 
+								v-if="index === 0" 
+								@click="addRow('investasi')" 
+								class="p-2 bg-green-500 text-white rounded-full hover:bg-green-600 focus:outline-none">
+								<i class="pi pi-plus"></i>
+							</Button>
+
+							<Button 
+								v-else 
+								@click="removeRow('investasi', index)" 
+								class="p-2 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none">
+								<i class="pi pi-trash"></i>
+							</Button>
+						</div>
+					</div>
+					<div class="border p-4 rounded-lg">
+						<h3 class="text-xl font-semibold mb-4">Unit Bisnis Settlement</h3>
+						<p class="text-blue-400 text-sm">*Process settlement deposito top - down</p>
+						<div v-for="(row, index) in settlementRows" :key="index" class="flex gap-4 mb-4">
+							<div class="w-full">
+								<label class="block text-sm font-semibold mb-1">Role</label>
+								<Dropdown
+									v-model="row.id_role"
+									:options="roles"
+									optionLabel="role"
+									optionValue="id_role"
+									placeholder="Pilih Role"
+									class="w-full"
+									:required="true"
+									:class="{'border-red-500': isInvalid(row.id_role)}"
+									@change="fetchUsers(index, 'settlement')"
+								/>
+								<p v-if="isInvalid(row.id_role)" class="text-red-500 text-sm">Role is required</p>
+							</div>
+
+							<div class="w-full">
+								<label class="block text-sm font-semibold mb-1">User</label>
+								<Dropdown
+									v-model="row.id_user"
+									:options="users[row.id_role] || []"
+									optionLabel="name"
+									optionValue="id_user"
+									placeholder="Pilih User"
+									class="w-full"
+								/>
+							</div>
+							<Button 
+								v-if="index === 0" 
+								@click="addRow('settlement')" 
+								class="p-2 bg-green-500 text-white rounded-full hover:bg-green-600 focus:outline-none">
+								<i class="pi pi-plus"></i>
+							</Button>
+							<Button
+								v-else
+								@click="removeRow('settlement', index)" 
+								class="p-2 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none">
+								<i class="pi pi-trash"></i>
+							</Button>
+						</div>
 					</div>
 				</div>
 			</div>
