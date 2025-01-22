@@ -5,7 +5,7 @@ const { getAllUnitBisnis, getUnitBisnisById } = require('../controllers/unitBisn
 const { getAllBank, getBankById } = require('../controllers/bankController');
 const { getAllDepositoRate, getDepositoRateById, getDepositoRateByBankId } = require('../controllers/depositoRateController');
 const { getAllDeposito, getDepositoById, getDepositoByParams, create, update } = require('../controllers/depositoController');
-const { getAllSettlementProcess, getSettlementProcessById, getSettlementProcessByDepositoID } = require('../controllers/settlementProcessController');
+const { getAllSettlementProcess, getSettlementProcessById, getSettlementProcessByDepositoID, getSettlementProcessByParams, updateSettlementProcess } = require('../controllers/settlementProcessController');
 const router = express.Router();
 
 router.post('/users-query', getUserByParams);
@@ -25,8 +25,10 @@ router.get('/depositos', getAllDeposito);
 router.get('/depositos/:id', getDepositoById);
 router.post('/depositos', create);
 router.patch('/depositos/:id', update);
+router.post('/settlement-process-query', getSettlementProcessByParams);
+router.patch('/settlement-process', updateSettlementProcess);
 router.get('/settlement-process', getAllSettlementProcess);
-router.get('/settlement-process-deposito/:id', getSettlementProcessById);
-router.get('/settlement-process/:id', getSettlementProcessByDepositoID);
+router.get('/settlement-process-deposito/:id', getSettlementProcessByDepositoID);
+router.get('/settlement-process/:id', getSettlementProcessById);
 
 module.exports = router;

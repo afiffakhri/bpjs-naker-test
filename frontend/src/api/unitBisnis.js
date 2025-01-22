@@ -11,7 +11,7 @@ export const getAllUnitBisnis = async () => {
 
 export const getUnitBisnisById = async(id_unit_bisnis) => {
 	try {
-		const response = await api.get('/unit-bisnis/${id_unit_bisnis}');
+		const response = await api.get(`/unit-bisnis/${id_unit_bisnis}`);
 		return response.data;
 	} catch (error) {
 		throw error.response?.data || error;

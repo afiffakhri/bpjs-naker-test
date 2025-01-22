@@ -8,7 +8,11 @@ async function getAllDeposito() {
 		const settlement_process = await settlementProcess.findAll({
 			where: {
 				id_deposito: data.id_deposito
-			}
+			},
+			order: [
+				['priority', 'ASC']
+			]
+
 		});
 
 		return {
@@ -26,7 +30,10 @@ async function getDepositoById(id_deposito){
 	const settlement_process = await settlementProcess.findAll({
 		where: {
 			id_deposito: id_deposito
-		}
+		},
+		order: [
+			['priority', 'ASC']
+		]
 	});
 
 	return {
@@ -43,7 +50,10 @@ async function getDepositoByParams(params){
 		const settlement_process = await settlementProcess.findAll({
 			where: {
 				id_deposito: data.id_deposito
-			}
+			},
+			order: [
+				['priority', 'ASC']
+			]
 		});
 
 		return {

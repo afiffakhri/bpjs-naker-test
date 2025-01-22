@@ -81,6 +81,10 @@ const Deposito = sequelize.define('Deposito', {
 		type: DataTypes.SMALLINT,
 		allowNull: true,
 	},
+	latest_update_text: {
+		type: DataTypes.STRING,
+		allowNull: true,
+	},
 }, 
 {
   tableName: 'deposito',

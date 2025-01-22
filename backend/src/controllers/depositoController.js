@@ -87,7 +87,7 @@ async function create(req, res) {
 	    const updatedSettlementRows = depositoData.unit_bisnis_settlement.map((row, index) => ({
 	    	...row,
 	    	id_deposito: id_deposito,
-	    	id_unit_bisnis: 1,
+	    	id_unit_bisnis: 2,
 	    	priority: lastPriority + index + 1,
 	    	status: 0
 	    }));

@@ -12,7 +12,7 @@
  Target Server Version : 140015 (140015)
  File Encoding         : 65001
 
- Date: 20/01/2025 02:24:07
+ Date: 22/01/2025 11:47:49
 */
 
 
@@ -160,7 +160,8 @@ CREATE TABLE "deposito" (
   "created_at" timestamp(6),
   "created_by" int2,
   "updated_at" timestamp(6),
-  "updated_by" int2
+  "updated_by" int2,
+  "latest_update_text" varchar(255) COLLATE "pg_catalog"."default"
 )
 ;
 
@@ -168,7 +169,20 @@ CREATE TABLE "deposito" (
 -- Records of deposito
 -- ----------------------------
 BEGIN;
-INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by") VALUES (1, 1, 1000000, 30000.00, 1030000, '2025-01-18 06:32:55', '2025-02-18 06:32:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (1, 1, 1000000, 30000.00, 1030000, '2025-01-18 06:32:55', '2025-02-18 06:32:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (2, 6, 1000000, 6164.38, 1006164.38, '2025-01-19 21:08:20', '2025-04-19 21:08:20', 0, NULL, 'Test', 'test@mail.com', '080989999', 'Testing', 2, '9891887281', NULL, 12, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (3, 10, 1000000, 8630.14, 1008630.14, '2025-01-19 21:27:52', '2025-04-19 21:27:52', 0, NULL, 'JOOSO', 'joss@mail.com', '12351514331', 'SJOOSJ', 4, '121312321', NULL, 12, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (4, 45, 1000000, 12328.77, 1012328.77, '2025-01-20 23:45:04', '2025-07-20 23:45:04', 0, NULL, 'Testomg', 'test@mail.com', '1231313141', 'Test', 8, '9189189819', NULL, 8, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (5, 40, 10000000, 92465.75, 10092465.75, '2025-01-20 23:47:03', '2025-04-20 23:47:03', 0, NULL, 'New Testing', 'newtest@mail.com', '18299292901', 'New Testing', 11, '998228811', '2025-01-20 23:47:03', 8, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (6, 40, 10000000, 92465.75, 10092465.75, '2025-01-20 23:48:38', '2025-04-20 23:48:38', 0, NULL, 'New Testing', 'newtest@mail.com', '18299292901', 'New Testing', 11, '998228811', '2025-01-20 23:48:38', 8, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (7, 40, 10000000, 92465.75, 10092465.75, '2025-01-20 23:49:02', '2025-04-20 23:49:02', 0, NULL, 'New Testing', 'newtest@mail.com', '18299292901', 'New Testing', 11, '998228811', '2025-01-20 23:49:02', 8, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (8, 40, 10000000, 92465.75, 10092465.75, '2025-01-20 23:49:02', '2025-04-20 23:49:02', 0, NULL, 'New Testing', 'newtest@mail.com', '18299292901', 'New Testing', 11, '998228811', '2025-01-20 23:49:02', 8, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (9, 40, 10000000, 92465.75, 10092465.75, '2025-01-20 23:51:35', '2025-04-20 23:51:35', 0, NULL, 'New Testing', 'newtest@mail.com', '18299292901', 'New Testing', 11, '998228811', '2025-01-20 23:51:35', 8, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (10, 40, 10000000, 92465.75, 10092465.75, '2025-01-20 23:55:49', '2025-04-20 23:55:49', 0, NULL, 'New Testing', 'newtest@mail.com', '18299292901', 'New Testing', 11, '998228811', '2025-01-20 23:55:49', 8, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (11, 40, 10000000, 92465.75, 10092465.75, '2025-01-21 00:00:29', '2025-04-21 00:00:29', 0, NULL, 'New Testing', 'newtest@mail.com', '18299292901', 'New Testing', 11, '998228811', '2025-01-21 00:00:29', 8, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (12, 40, 10000000, 92465.75, 10092465.75, '2025-01-21 00:01:36', '2025-04-21 00:01:36', 0, NULL, 'New Testing', 'newtest@mail.com', '18299292901', 'New Testing', 11, '998228811', '2025-01-21 00:01:36', 8, NULL, NULL, NULL);
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (14, 53, 15000000, 351369.86, 15351369.86, '2025-01-22 02:19:31', '2025-07-22 02:19:31', 1, '2025-01-22 04:42:55', 'Deposito Baru', 'newDeps@mail.com', '182020109010', 'Deposito Baru', 1, '1998882779', '2025-01-22 02:19:31', 12, '2025-01-22 04:42:55', 14, 'Approved By Dorothy Reyes dari DIREKTUR Unit Bisnis Investasi');
+INSERT INTO "deposito" ("id_deposito", "id_deposito_rate", "deposit_value", "estimated_interest", "estimated_value", "tanggal_penempatan", "tanggal_jatuh_tempo", "settlement_status", "latest_update", "name", "email", "phone", "nama_pemegang_rekening", "id_bank", "nomor_rekening", "created_at", "created_by", "updated_at", "updated_by", "latest_update_text") VALUES (13, 40, 10000000, 92465.75, 10092465.75, '2025-01-21 00:02:26', '2025-04-21 00:02:26', 2, '2025-01-22 04:46:17', 'New Testing', 'newtest@mail.com', '18299292901', 'New Testing', 11, '998228811', '2025-01-21 00:02:26', 8, '2025-01-22 04:46:17', 2, 'Approved By Jason Scott dari PENATA SETTLEMENT Unit Bisnis Settlement');
 COMMIT;
 
 -- ----------------------------
@@ -295,6 +309,18 @@ CREATE TABLE "settlement_process" (
 -- Records of settlement_process
 -- ----------------------------
 BEGIN;
+INSERT INTO "settlement_process" ("id_settlement_process", "id_deposito", "id_unit_bisnis", "id_role", "id_user", "priority", "status", "remarks", "updated_at", "updated_by") VALUES (9, 14, 2, 2, 13, 4, 0, NULL, NULL, NULL);
+INSERT INTO "settlement_process" ("id_settlement_process", "id_deposito", "id_unit_bisnis", "id_role", "id_user", "priority", "status", "remarks", "updated_at", "updated_by") VALUES (10, 14, 2, 3, 5, 5, 0, NULL, NULL, NULL);
+INSERT INTO "settlement_process" ("id_settlement_process", "id_deposito", "id_unit_bisnis", "id_role", "id_user", "priority", "status", "remarks", "updated_at", "updated_by") VALUES (11, 14, 2, 4, NULL, 6, 0, NULL, NULL, NULL);
+INSERT INTO "settlement_process" ("id_settlement_process", "id_deposito", "id_unit_bisnis", "id_role", "id_user", "priority", "status", "remarks", "updated_at", "updated_by") VALUES (12, 14, 2, 6, NULL, 7, 0, NULL, NULL, NULL);
+INSERT INTO "settlement_process" ("id_settlement_process", "id_deposito", "id_unit_bisnis", "id_role", "id_user", "priority", "status", "remarks", "updated_at", "updated_by") VALUES (1, 13, 1, 4, NULL, 1, 1, 'Lengkap', '2025-01-22 04:07:49', 7);
+INSERT INTO "settlement_process" ("id_settlement_process", "id_deposito", "id_unit_bisnis", "id_role", "id_user", "priority", "status", "remarks", "updated_at", "updated_by") VALUES (6, 14, 1, 4, 16, 1, 1, '', '2025-01-22 04:11:38', 16);
+INSERT INTO "settlement_process" ("id_settlement_process", "id_deposito", "id_unit_bisnis", "id_role", "id_user", "priority", "status", "remarks", "updated_at", "updated_by") VALUES (7, 14, 1, 3, NULL, 2, 1, '', '2025-01-22 04:25:00', 4);
+INSERT INTO "settlement_process" ("id_settlement_process", "id_deposito", "id_unit_bisnis", "id_role", "id_user", "priority", "status", "remarks", "updated_at", "updated_by") VALUES (8, 14, 1, 2, 14, 3, 1, 'Sip', '2025-01-22 04:42:55', 14);
+INSERT INTO "settlement_process" ("id_settlement_process", "id_deposito", "id_unit_bisnis", "id_role", "id_user", "priority", "status", "remarks", "updated_at", "updated_by") VALUES (2, 13, 1, 2, 14, 2, 1, '', '2025-01-22 04:44:04', 14);
+INSERT INTO "settlement_process" ("id_settlement_process", "id_deposito", "id_unit_bisnis", "id_role", "id_user", "priority", "status", "remarks", "updated_at", "updated_by") VALUES (3, 13, 2, 2, 13, 3, 1, '', '2025-01-22 04:44:55', 13);
+INSERT INTO "settlement_process" ("id_settlement_process", "id_deposito", "id_unit_bisnis", "id_role", "id_user", "priority", "status", "remarks", "updated_at", "updated_by") VALUES (4, 13, 2, 3, NULL, 4, 1, '', '2025-01-22 04:45:47', 5);
+INSERT INTO "settlement_process" ("id_settlement_process", "id_deposito", "id_unit_bisnis", "id_role", "id_user", "priority", "status", "remarks", "updated_at", "updated_by") VALUES (5, 13, 2, 6, 2, 5, 1, 'Selesai', '2025-01-22 04:46:17', 2);
 COMMIT;
 
 -- ----------------------------
@@ -341,7 +367,6 @@ INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (2, 6, 'Jason Scott', 'scotjas@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 2);
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (3, 6, 'Paul Mendez', 'mendezpaul@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 1);
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (4, 3, 'Sherry Jimenez', 'sjim@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 1);
-INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (5, 3, 'Richard Guzman', 'richaguzman@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 1);
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (6, 1, 'Lillian Gray', 'lilliangray4@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 2);
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (7, 4, 'Brandon Hayes', 'hayesbrand@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 1);
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (8, 5, 'Janice Gutierrez', 'janigu@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 2);
@@ -349,7 +374,6 @@ INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (10, 2, 'James Griffin', 'james93@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 1);
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (11, 4, 'Curtis Mills', 'mic51@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 2);
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (12, 5, 'Bryan Flores', 'fbryan@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 2);
-INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (13, 2, 'Alexander Spencer', 'alspencer71@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 1);
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (14, 2, 'Dorothy Reyes', 'dorothyre416@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 1);
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (15, 1, 'John Medina', 'medinjohn2020@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 2);
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (16, 4, 'Patricia Stevens', 'stevenspatr@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 1);
@@ -358,6 +382,8 @@ INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (19, 4, 'Gladys Adams', 'adamsgladys@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 1);
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (20, 4, 'Brandon Evans', 'evans226@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 2);
 INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (21, 6, 'Francisco Henderson', 'frh@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 1);
+INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (13, 2, 'Alexander Spencer', 'alspencer71@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 2);
+INSERT INTO "user" ("id_user", "id_role", "name", "email", "password", "created_at", "created_by", "updated_at", "updated_by", "id_unit_bisnis") VALUES (5, 3, 'Richard Guzman', 'richaguzman@gmail.com', '$2a$12$CiL0f897Fo7Wt6C3rK4CHurVvB.3tHtWxROnrNM773TakoLQ09.wa', NULL, NULL, NULL, NULL, 2);
 COMMIT;
 
 -- ----------------------------
@@ -372,7 +398,7 @@ SELECT setval('"banks_id_bank_seq"', 16, true);
 -- ----------------------------
 ALTER SEQUENCE "deposito_id_deposito_seq"
 OWNED BY "deposito"."id_deposito";
-SELECT setval('"deposito_id_deposito_seq"', 1, true);
+SELECT setval('"deposito_id_deposito_seq"', 14, true);
 
 -- ----------------------------
 -- Alter sequences owned by
@@ -393,7 +419,7 @@ SELECT setval('"role_id_role_seq"', 6, true);
 -- ----------------------------
 ALTER SEQUENCE "settlement_process_id_settlement_status_seq"
 OWNED BY "settlement_process"."id_settlement_process";
-SELECT setval('"settlement_process_id_settlement_status_seq"', 1, false);
+SELECT setval('"settlement_process_id_settlement_status_seq"', 12, true);
 
 -- ----------------------------
 -- Alter sequences owned by
