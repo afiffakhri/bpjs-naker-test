@@ -26,4 +26,27 @@ async function getRolesById(req, res) {
 	}
 }
 
-module.exports = { getAllRoles, getRolesById };
+async function createRole(req, res){
+	const params = req.body;
+
+	try{
+		const role = await roleService.createRole(params);
+
+		res.json({ success: true, role: role });
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: 'Error getting role' });
+	}
+}
+
+async function updateRole(req, res) {
+	try {
+		const roleData = req.body;
+		const updatedRole = await roleService.updateRole(roleData.id_role, {role: roleData.role});
+		res.status(200).json(updatedRole);
+	} catch (error) {
+		res.status(500).json({ message: error.message });
+	}
+}
+
+module.exports = { getAllRoles, getRolesById, createRole, updateRole };

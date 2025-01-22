@@ -15,4 +15,29 @@ async function getRoleById(id_role){
 	return await Role.findOne({ where: { id_role } });
 }
 
-module.exports = { getAllRoles, getRoleById };
+async function createRole(roleData) {
+	try {
+		const role = await Role.create(roleData);
+		return role;
+	} catch (error) {
+		throw new Error('Error creating role: ' + error.message);
+	}
+}
+
+async function updateRole(id_role, roleData) {
+	try {
+		const role = await Role.findOne({ where: { id_role } });
+
+		if (!role) {
+			throw new Error('role not found');
+		}
+
+		await role.update(roleData);
+
+		return role;
+	} catch (error) {
+		throw new Error('Error updating role: ' + error.message);
+	}
+}
+
+module.exports = { getAllRoles, getRoleById, createRole, updateRole };

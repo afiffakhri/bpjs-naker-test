@@ -17,3 +17,21 @@ export const getRolesById = async(id_role) => {
 		throw error.response?.data || error;
 	}
 };
+
+export const createRole = async (roleData) => {
+	try {
+		const response = await api.post('/roles', roleData);
+		return response.data;
+	} catch (error) {
+		throw error.response?.data || error;
+	}
+};
+
+export const updateRole = async (roleData) => {
+	try {
+		const response = await api.patch(`/roles-update`, roleData);
+		return response.data;
+	} catch (error) {
+		throw error.response?.data || error;
+	}
+};

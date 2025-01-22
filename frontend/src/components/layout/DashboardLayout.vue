@@ -12,6 +12,7 @@ const user = JSON.parse(localStorage.getItem('user'));
 
 const menuItems = [
 	{ label: 'Dashboard', icon: 'pi pi-home', to: '/dashboard' },
+	{ label: 'Role Management', icon: 'pi pi-users', to: '/roles', role: 'admin' },
 	{ label: 'User Management', icon: 'pi pi-users', to: '/users', role: 'admin' },
 	{ label: 'Deposito Management', icon: 'pi pi-money-bill', to: '/depositos' }
 ];

@@ -1,6 +1,6 @@
 const express = require('express');
 const { getAllUsers, getUserById, getUserByParams } = require('../controllers/userController');
-const { getAllRoles, getRolesById } = require('../controllers/roleController');
+const { getAllRoles, getRolesById, createRole, updateRole } = require('../controllers/roleController');
 const { getAllUnitBisnis, getUnitBisnisById } = require('../controllers/unitBisnisController');
 const { getAllBank, getBankById } = require('../controllers/bankController');
 const { getAllDepositoRate, getDepositoRateById, getDepositoRateByBankId } = require('../controllers/depositoRateController');
@@ -11,7 +11,10 @@ const router = express.Router();
 router.post('/users-query', getUserByParams);
 router.get('/users', getAllUsers);
 router.get('/users/:id', getUserById);
+
+router.post('/roles', createRole);
 router.get('/roles', getAllRoles);
+router.patch('/roles-update', updateRole);
 router.get('/roles/:id', getRolesById);
 router.get('/unit-bisnis', getAllUnitBisnis);
 router.get('/unit-bisnis/:id', getUnitBisnisById);
